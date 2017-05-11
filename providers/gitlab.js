@@ -45,7 +45,7 @@ module.exports = {
 
                 if (body.after !== '0000000000000000000000000000000000000000') {
                     discordPayload.addEmbed({
-                        title: "Pushed tag \"" + tag + "\" to " + project.name,
+                        title: "Pushed tag \"" + tag + "\"",
                         url: project.url + '/tags/' + tag,
                         author: {
                             name: body.user_name,
@@ -55,7 +55,7 @@ module.exports = {
                     });
                 } else {
                     discordPayload.addEmbed({
-                        title: "Deleted tag \"" + tag + "\" on " + project.name,
+                        title: "Deleted tag \"" + tag + "\"",
                         url: project.url + '/tags/' + tag,
                         author: {
                             name: body.user_name,
@@ -75,7 +75,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " issue #" + body.object_attributes.iid + " on " + body.project.name,
+                    title: actions[body.object_attributes.action] + " issue #" + body.object_attributes.iid,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
@@ -108,7 +108,7 @@ module.exports = {
                 }
 
                 discordPayload.addEmbed({
-                    title: "Wrote a comment on " + type + " on " + body.project.name,
+                    title: "Wrote a comment on " + type,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
@@ -128,7 +128,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid + " on " + body.project.name,
+                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
@@ -151,7 +151,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " wiki page " + body.object_attributes.title + " on " + body.project.name,
+                    title: actions[body.object_attributes.action] + " wiki page " + body.object_attributes.title,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
@@ -163,7 +163,7 @@ module.exports = {
 
             case "pipeline":
                 discordPayload.addEmbed({
-                    title: "Pipeline #" + body.object_attributes.id + " on " + body.project.name,
+                    title: "Pipeline #" + body.object_attributes.id,
                     url: body.project.web_url + "/pipelines/" + body.object_attributes.id,
                     author: {
                         name: body.user.name,
@@ -175,7 +175,7 @@ module.exports = {
 
             case "build":
                 discordPayload.addEmbed({
-                    title: "Build #" + build_id + " on " + body.project.name,
+                    title: "Build #" + build_id,
                     url: body.project.web_url + "/builds/" + body.build_id,
                     author: {
                         name: body.user.name,
