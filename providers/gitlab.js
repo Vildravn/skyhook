@@ -75,7 +75,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " issue #" + body.object_attributes.iid,
+                    title: actions[body.object_attributes.action] + " issue #" + body.object_attributes.iid + " - " + body.object_attributes.title,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
@@ -97,13 +97,13 @@ module.exports = {
                         type = "commit (" + body.commit.id.substring(0, 7) + ")";
                         break;
                     case "MergeRequest":
-                        type = "merge request #" + body.merge_request.iid;
+                        type = "merge request #" + body.merge_request.iid + " - " + body.merge_request.title;
                         break;
                     case "Issue":
-                        type = "issue #" + body.issue.iid;
+                        type = "issue #" + body.issue.iid + " - " + body.issue.title;
                         break;
                     case "Snippet":
-                        type = "snippet #" + body.snippet.id;
+                        type = "snippet #" + body.snippet.id + " - " + body.snippet.title;
                         break;
                 }
 
@@ -128,7 +128,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid,
+                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid - body.object_attributes.title,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
