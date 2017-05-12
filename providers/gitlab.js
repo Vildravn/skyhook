@@ -128,7 +128,7 @@ module.exports = {
                 };
 
                 discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid - body.object_attributes.title,
+                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid + " - " + body.object_attributes.title,
                     url: body.object_attributes.url,
                     author: {
                         name: body.user.name,
