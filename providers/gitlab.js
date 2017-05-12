@@ -127,20 +127,22 @@ module.exports = {
                     merge: "Merged"
                 };
 
-                discordPayload.addEmbed({
-                    title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid + " - " + body.object_attributes.title,
-                    url: body.object_attributes.url,
-                    author: {
-                        name: body.user.name,
-                        icon_url: body.user.avatar_url
-                    },
-                    fields: [
-                        {
-                            name: body.object_attributes.title,
-                            value: (body.object_attributes.description.length > 200) ? body.object_attributes.description.substring(0, 197) + "..." : body.object_attributes.description
-                        }
-                    ]
-                });
+                if (body.object_attributes.action == "merge") {
+                    discordPayload.addEmbed({
+                        title: actions[body.object_attributes.action] + " merge request #" + body.object_attributes.iid + " - " + body.object_attributes.title,
+                        url: body.object_attributes.url,
+                        author: {
+                            name: body.user.name,
+                            icon_url: body.user.avatar_url
+                        },
+                        fields: [
+                            {
+                                name: body.object_attributes.title,
+                                value: (body.object_attributes.description.length > 200) ? body.object_attributes.description.substring(0, 197) + "..." : body.object_attributes.description
+                            }
+                        ]
+                    });
+                }
                 break;
 
             case "wiki_page":
